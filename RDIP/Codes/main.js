@@ -183,7 +183,12 @@ function formSentence(ele) {
   ele.style.display = "none";
   cnt++;
   if (cnt == arrayWords.length) {
+    document.getElementById("checkdiv").style.display = "block";
     document.getElementById("correct").style.display = "block";
+    var a = document.getElementsByClassName("wordBtn");
+    for (var i = 0; i < a.length; i++) {
+      a[i].style.display = "inline";
+    }
   }
 }
 
@@ -197,6 +202,9 @@ function resetSentence() {
     a[i].style.display = "inline";
   }
   cnt = 0;
+  document.getElementById("checkdiv").style.display = "none";
+  document.getElementById("wrong").style.display = "none";
+  document.getElementById("right").style.display = "none";
 }
 
 function removeEmpty(a) {
@@ -220,9 +228,9 @@ function checkCorrect() {
       document.getElementById("right").style.display = "block";
       selectedanswer = true;
     }
-    if (selectedanswer != true)
-      document.getElementById("wrong").style.display = "block";
   }
+  if (selectedanswer != true)
+    document.getElementById("wrong").style.display = "block";
   document.getElementById("bt").disabled = true;
 }
 
