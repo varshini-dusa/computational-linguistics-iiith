@@ -12,3 +12,6 @@
 #language {
   width: fit-content;
 }
+#words button {
+  margin: 1rem;
+}

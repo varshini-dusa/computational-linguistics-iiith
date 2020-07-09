@@ -107,13 +107,49 @@ var correctAnsHin = [
     "है वहाँ बड़ी सी एक किताब",
   ],
 ];
-// console.log(correctAns[0][1]);
+
+function getrandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+function randomizeArray(arr) {
+  var ctr = arr.length,
+    temp,
+    index;
+
+  // While there are elements in the array
+  while (ctr > 0) {
+    // Pick a random index
+    index = Math.floor(Math.random() * ctr);
+    // Decrease ctr by 1
+    ctr--;
+    // And swap the last element with it
+    temp = arr[ctr];
+    arr[ctr] = arr[index];
+    arr[index] = temp;
+  }
+  return arr;
+}
+
+function getButtonValues(arr) {
+  var a = getrandomNumber(0, arr.length);
+  a = randomizeArray(arr[a][0].split(" "));
+  var b = document.getElementById("words").innerHTML;
+  document.getElementById("words").innerHTML = "";
+  a.forEach((element) => {
+    document.getElementById("words").innerHTML +=
+      "<button>" + element + "</button>";
+  });
+}
 
 function selectLan() {
   var language = document.getElementById("language").value;
-  document.getElementById("intro").style.display = "block";
   if (language == "english") {
+    document.getElementById("intro").style.display = "block";
+    getButtonValues(correctAnsEng);
   } else if (language == "hindi") {
+    document.getElementById("intro").style.display = "block";
+    getButtonValues(correctAnsHin);
   } else {
     alert("incorrect input");
   }
