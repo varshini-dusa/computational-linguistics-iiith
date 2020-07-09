@@ -178,7 +178,7 @@ function formSentence(ele) {
   document.getElementById("sentence").style.display = "block";
   document.getElementById("p2").innerHTML += "&nbsp;" + ele.value;
   sentence += String(ele.value) + " ";
-  console.log(sentence);
+  //   console.log(sentence);
 
   ele.style.display = "none";
   cnt++;
@@ -227,7 +227,20 @@ function checkCorrect() {
 }
 
 function showAnswer() {
-  for (var i = 0; i < selectedArray.length; i++) {
-    document.getElementById("answer").innerHTML += selectedArray[i] + "</br>";
+  if (
+    document.getElementById("getanswer").value == "Get Correct Answer" ||
+    document.getElementById("getanswer").value == "Get Answers"
+  ) {
+    document.getElementById("getanswer").value = "Hide the correct sentence";
+    for (var i = 0; i < selectedArray.length; i++) {
+      document.getElementById("answer").innerHTML += selectedArray[i] + "</br>";
+    }
+
+    document.getElementById("answer").style.display = "block";
+  } else if (
+    document.getElementById("getanswer").value == "Hide the correct sentence"
+  ) {
+    document.getElementById("answer").style.display = "none";
+    document.getElementById("getanswer").value = "Get Answers";
   }
 }
