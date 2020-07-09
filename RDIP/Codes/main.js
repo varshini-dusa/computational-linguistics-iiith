@@ -107,10 +107,11 @@ var correctAnsHin = [
     "है वहाँ बड़ी सी एक किताब",
   ],
 ];
-console.log(correctAns[0][1]);
+// console.log(correctAns[0][1]);
 
 function selectLan() {
   var language = document.getElementById("language").value;
+  document.getElementById("intro").style.display = "block";
   if (language == "english") {
   } else if (language == "hindi") {
   } else {

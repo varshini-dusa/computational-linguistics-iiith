@@ -5,6 +5,10 @@
 .content {
   text-align: center;
 }
+#intro {
+  display: none;
+  margin: 1rem;
+}
 #language {
   width: fit-content;
 }
