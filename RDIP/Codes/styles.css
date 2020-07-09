@@ -18,3 +18,7 @@
 #sentence {
   display: none;
 }
+#correct {
+  display: none;
+  margin: 1rem;
+}

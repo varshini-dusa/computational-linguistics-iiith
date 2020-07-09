@@ -110,6 +110,7 @@ var correctAnsHin = [
 
 var sentence = "";
 var arrayWords;
+var cnt = 0;
 
 function getrandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
@@ -172,6 +173,10 @@ function formSentence(ele) {
   document.getElementById("p2").innerHTML += "&nbsp;" + ele.value;
   sentence.concat(String(ele.value) + " ");
   ele.style.display = "none";
+  cnt++;
+  if (cnt == arrayWords.length) {
+    document.getElementById("correct").style.display = "block";
+  }
 }
 
 function resetSentence() {
@@ -183,4 +188,7 @@ function resetSentence() {
   for (var i = 0; i < a.length; i++) {
     a[i].style.display = "inline";
   }
+  cnt = 0;
 }
+
+function checkCorrect() {}
