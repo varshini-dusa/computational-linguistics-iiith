@@ -108,9 +108,12 @@ var correctAnsHin = [
   ],
 ];
 
-var sentence = "";
+var sentence = " ";
 var arrayWords;
 var cnt = 0;
+var selectedlanguage;
+var selectedIndex;
+var selectedArray;
 
 function getrandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
@@ -137,6 +140,7 @@ function randomizeArray(arr) {
 
 function getButtonValues(arr) {
   var a = getrandomNumber(0, arr.length);
+  selectedIndex = a;
   a = randomizeArray(arr[a][0].split(" "));
   var b = document.getElementById("words").innerHTML;
   document.getElementById("words").innerHTML = "";
@@ -159,10 +163,12 @@ function selectLan() {
   var language = document.getElementById("language").value;
   if (language == "english") {
     document.getElementById("intro").style.display = "block";
+    selectedlanguage = correctAnsEng;
     getButtonValues(correctAnsEng);
   } else if (language == "hindi") {
     document.getElementById("intro").style.display = "block";
     getButtonValues(correctAnsHin);
+    selectedlanguage = correctAnsHin;
   } else {
     alert("incorrect input");
   }
@@ -171,7 +177,9 @@ function selectLan() {
 function formSentence(ele) {
   document.getElementById("sentence").style.display = "block";
   document.getElementById("p2").innerHTML += "&nbsp;" + ele.value;
-  sentence.concat(String(ele.value) + " ");
+  sentence += String(ele.value) + " ";
+  console.log(sentence);
+
   ele.style.display = "none";
   cnt++;
   if (cnt == arrayWords.length) {
@@ -191,4 +199,35 @@ function resetSentence() {
   cnt = 0;
 }
 
-function checkCorrect() {}
+function removeEmpty(a) {
+  return a.filter(function (ele) {
+    return ele != "";
+  });
+}
+
+function checkCorrect() {
+  var a = sentence.split(" ");
+  a = removeEmpty(a);
+  //   console.log(a);
+  var selectedanswer = false;
+  selectedArray = selectedlanguage[selectedIndex];
+
+  for (var i = 0; i < selectedArray.length; i++) {
+    var b = selectedArray[i].split(" ");
+    // console.log(b);
+
+    if (JSON.stringify(b) == JSON.stringify(a)) {
+      document.getElementById("right").style.display = "block";
+      selectedanswer = true;
+    }
+    if (selectedanswer != true)
+      document.getElementById("wrong").style.display = "block";
+  }
+  document.getElementById("bt").disabled = true;
+}
+
+function showAnswer() {
+  for (var i = 0; i < selectedArray.length; i++) {
+    document.getElementById("answer").innerHTML += selectedArray[i] + "</br>";
+  }
+}
