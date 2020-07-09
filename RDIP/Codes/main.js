@@ -108,6 +108,8 @@ var correctAnsHin = [
   ],
 ];
 
+var sentence = "";
+
 function getrandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
@@ -138,7 +140,11 @@ function getButtonValues(arr) {
   document.getElementById("words").innerHTML = "";
   a.forEach((element) => {
     document.getElementById("words").innerHTML +=
-      "<button>" + element + "</button>";
+      "<button onclick='formSentence(this)' value='" +
+      element +
+      "'>" +
+      element +
+      "</button>";
   });
 }
 
@@ -153,4 +159,17 @@ function selectLan() {
   } else {
     alert("incorrect input");
   }
+}
+
+function formSentence(ele) {
+  document.getElementById("p1").style.display = "block";
+  document.getElementById("p2").innerHTML += "&nbsp;" + ele.value;
+  sentence.concat(String(ele.value) + " ");
+  document.getElementById("bt").style.display = "block";
+  ele.style.display = "none";
+}
+
+function resetSentence() {
+  document.getElementById("p2").innerHTML = "";
+  sentence = "";
 }
