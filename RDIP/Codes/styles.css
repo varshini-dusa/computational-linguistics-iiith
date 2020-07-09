@@ -1,0 +1,10 @@
+.container {
+  margin: 3rem;
+  text-align: center;
+}
+.content {
+  text-align: center;
+}
+#language {
+  width: fit-content;
+}

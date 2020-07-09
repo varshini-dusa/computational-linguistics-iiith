@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <title>Virtual Labs</title>
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./main.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 content">
+          <div class="lanSelector">
+            <select
+              name="language"
+              id="language"
+              class="form-control"
+              onchange="selectLan()"
+            >
+              <option selected>---Selected Language---</option>
+              <option value="english">English</option>
+              <option value="hindi">Hindi</option>
+            </select>
+          </div>
+          <div class="engWords">
+            <h4>
+              Form a sentence (Declarative or Interrogative or any other type)
+              from the given words
+            </h4>
+            <br />
+            <h5>(select the buttons in proper order)</h5>
+            <br />
+            <div>
+              <!-- <button class="btn btn-light"></button> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+  </body>
+</html>
