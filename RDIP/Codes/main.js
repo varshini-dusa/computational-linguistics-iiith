@@ -196,7 +196,7 @@ function resetSentence() {
   document.getElementById("p2").innerHTML = "";
   sentence = "";
   document.getElementById("sentence").style.display = "none";
-  document.getElementById("sentence").style.display = "none";
+  //   document.getElementById("sentence").style.display = "none";
   var a = document.getElementsByClassName("wordBtn");
   for (var i = 0; i < a.length; i++) {
     a[i].style.display = "inline";
@@ -205,6 +205,7 @@ function resetSentence() {
   document.getElementById("checkdiv").style.display = "none";
   document.getElementById("wrong").style.display = "none";
   document.getElementById("right").style.display = "none";
+  document.getElementById("getanswer").value = "Get Correct Answer";
 }
 
 function removeEmpty(a) {
@@ -216,7 +217,7 @@ function removeEmpty(a) {
 function checkCorrect() {
   var a = sentence.split(" ");
   a = removeEmpty(a);
-  //   console.log(a);
+  console.log(a);
   var selectedanswer = false;
   selectedArray = selectedlanguage[selectedIndex];
 
@@ -231,7 +232,7 @@ function checkCorrect() {
   }
   if (selectedanswer != true)
     document.getElementById("wrong").style.display = "block";
-  document.getElementById("bt").disabled = true;
+  //   document.getElementById("bt").disabled = true;
 }
 
 function showAnswer() {
