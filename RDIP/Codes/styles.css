@@ -15,10 +15,6 @@
 #words button {
   margin: 1rem;
 }
-#p1 {
+#sentence {
   display: none;
-}
-#bt {
-  display: none;
-  text-align: center;
 }

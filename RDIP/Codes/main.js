@@ -109,6 +109,7 @@ var correctAnsHin = [
 ];
 
 var sentence = "";
+var arrayWords;
 
 function getrandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
@@ -138,9 +139,14 @@ function getButtonValues(arr) {
   a = randomizeArray(arr[a][0].split(" "));
   var b = document.getElementById("words").innerHTML;
   document.getElementById("words").innerHTML = "";
+  arrayWords = a;
+  displayButtons(a);
+}
+
+function displayButtons(a) {
   a.forEach((element) => {
     document.getElementById("words").innerHTML +=
-      "<button onclick='formSentence(this)' value='" +
+      "<button onclick='formSentence(this)' class='wordBtn' value='" +
       element +
       "'>" +
       element +
@@ -162,14 +168,19 @@ function selectLan() {
 }
 
 function formSentence(ele) {
-  document.getElementById("p1").style.display = "block";
+  document.getElementById("sentence").style.display = "block";
   document.getElementById("p2").innerHTML += "&nbsp;" + ele.value;
   sentence.concat(String(ele.value) + " ");
-  document.getElementById("bt").style.display = "block";
   ele.style.display = "none";
 }
 
 function resetSentence() {
   document.getElementById("p2").innerHTML = "";
   sentence = "";
+  document.getElementById("sentence").style.display = "none";
+  document.getElementById("sentence").style.display = "none";
+  var a = document.getElementsByClassName("wordBtn");
+  for (var i = 0; i < a.length; i++) {
+    a[i].style.display = "inline";
+  }
 }
