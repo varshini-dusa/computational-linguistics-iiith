@@ -6,5 +6,12 @@ var corpus = [
 
 function selectCorp() {
   var selectedCorp = document.getElementById("corp").value;
-  console.log(corpus[parseInt(selectedCorp)]);
+  document.getElementById("corpViewer").innerHTML =
+    corpus[parseInt(selectedCorp)];
+  document.getElementById("inputAns").style.display = "block";
+}
+function submitValues() {
+  var tokens = document.getElementById("tokens").value;
+  var types = document.getElementById("types").value;
+  console.log("enterd" + tokens, types);
 }

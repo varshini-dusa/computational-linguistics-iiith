@@ -36,7 +36,27 @@
               <option value="2">Corpus 3</option>
             </select>
           </div>
+          <div id="corpViewer"></div>
+          <div id="inputAns">
+            <p>Enter the number of tokens and types for the above corpus:</p>
+            <table>
+              <tr>
+                <td>#tokens:</td>
+                <td>
+                  <input type="number" name="tokens" id="tokens" />
+                </td>
+              </tr>
+              <tr>
+                <td>#types:</td>
+                <td>
+                  <input type="number" name="types" id="types" />
+                </td>
+              </tr>
+            </table>
+            <button onclick="submitValues()">Submit</button>
+          </div>
         </div>
+        <div class="col-md-2"></div>
       </div>
     </div>
   </body>

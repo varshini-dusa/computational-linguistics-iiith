@@ -7,4 +7,9 @@
 }
 .corpSelector {
   margin: 3rem;
+  text-align: center;
+}
+#inputAns {
+  display: none;
+  text-align: center;
 }
