@@ -30,7 +30,7 @@
               class="form-control align-self-center mx-auto"
               onchange="selectCorp()"
             >
-              <option selected>---Selected a corpus---</option>
+              <option selected>---Select a corpus---</option>
               <option value="0">Corpus 1</option>
               <option value="1">Corpus 2</option>
               <option value="2">Corpus 3</option>
@@ -39,22 +39,23 @@
           <div id="corpViewer"></div>
           <div id="inputAns">
             <p>Enter the number of tokens and types for the above corpus:</p>
-            <table>
+            <table class="center">
               <tr>
                 <td>#tokens:</td>
                 <td>
-                  <input type="number" name="tokens" id="tokens" />
+                  <input type="text" name="tokens" id="tokens" />
                 </td>
               </tr>
               <tr>
                 <td>#types:</td>
                 <td>
-                  <input type="number" name="types" id="types" />
+                  <input type="text" name="types" id="types" />
                 </td>
               </tr>
             </table>
             <button onclick="submitValues()">Submit</button>
           </div>
+          <div id="outputAns"></div>
         </div>
         <div class="col-md-2"></div>
       </div>
