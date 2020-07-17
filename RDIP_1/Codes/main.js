@@ -42,9 +42,15 @@ function submitValues() {
   }
   if (correctType == true && correctToken == true) {
     document.getElementById("outputAns").innerHTML =
-      "<p id='right'>Right Answer</p><button>Continue</button>";
+      "<p id='right'>Right Answer</p><button onclick='getNewTypes()'>Continue</button>";
   } else {
     document.getElementById("outputAns").innerHTML =
       "<p id='wrong'>Wrong Answer</p>";
   }
+}
+
+function getNewTypes() {
+  document.getElementById("submitbtn").style.display = "none";
+  document.getElementById("outputAns").innerHTML =
+    "<p>Now, consider all the tokens with the same 'root' word to be of the same type. Recalculate the number of types.</p><label>#new types:</label><br/><input type='text' name='newtype' id='newtype' /><br/><button id='finalsb'>Submit</button>";
 }
