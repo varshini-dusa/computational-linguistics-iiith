@@ -170,9 +170,14 @@ function getNewTypes() {
 }
 function checkNewType() {
   var ans = document.getElementById("newtype").value;
+  document.getElementById("newtype").style.backgroundColor = "white";
   if (parseInt(ans) == newTypesAns[selectedCorp]) {
-    console.log(true);
+    document.getElementById("newtype").style.backgroundColor = "green";
+    document.getElementById("finalOutputAns").innerHTML =
+      "<p id='right'>Right Answer</p>";
   } else {
-    console.log(false);
+    document.getElementById("newtype").style.backgroundColor = "red";
+    document.getElementById("finalOutputAns").innerHTML =
+      "<p id='wrong'>Wrong Answer</p>";
   }
 }
