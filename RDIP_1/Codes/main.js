@@ -1,9 +1,7 @@
-var Snowball = require(["../Codes/snowball"]);
-console.log(typeof Snowball);
-// var stemmer = new Snowball("English");
-// stemmer.setCurrent("abbreviations");
-// stemmer.stem();
-// console.log(stemmer.getCurrent());
+// const Snowball = require("snowball/stemmer/lib/Snowball");
+
+var stemmer = new Snowball("English");
+// console.log(stemmer);
 
 var corpus = [
   'A mouse was having a very bad time. She could find no food at all. She looked here and there, but there was no food, and she grew very thin. At last the mouse found a basket, full of corn. There was a small hole in the basket, and she crept in. She could just get through the hole. Then she began to eat the corn. Being very hungry, she ate a great deal, and went on eating and eating. She had grown very fat before she felt that she had had enough. When the mouse tried to climb out of the basket, she could not. She was too fat to pass through the hole. "How shall I climb out?" said the mouse. "oh, how shall I climb out?" Just then a rat came along, and he heard the mouse. "Mouse," said the rat, "if you want to climb out of the basket, you must wait till you have grown as thin as you were when you went in.',
@@ -13,7 +11,50 @@ var corpus = [
 
 var tokenAns = [];
 var typesAns = [];
+var newTypesAns = [];
+var token = [];
+var types = [];
+var newtypes = [];
 var selectedCorp;
+var answer1 = [
+  "were",
+  "had",
+  "found",
+  "ate",
+  "grown",
+  "heard",
+  "played",
+  "are",
+  "himself",
+  "his",
+  "him",
+  "me",
+  "is",
+
+  "ran",
+  "do",
+  "would",
+];
+var answer2 = [
+  "was",
+  "have",
+  "find",
+  "eat",
+  "grew",
+  "hear",
+  "play",
+  "was",
+  "he",
+  "he",
+  "he",
+  "i",
+  "was",
+
+  "run",
+  "did",
+  "was",
+];
+
 function removeEmpty(a) {
   return a.filter(function (ele) {
     return (
@@ -41,13 +82,54 @@ function calWords() {
       fi.push(k.toLowerCase());
     }
     var set = new Set(fi);
+    token.push(fi);
+    types.push(Array.from(set));
     tokenAns.push(fi.length);
     typesAns.push(set.size);
+  }
+}
+function replaceWord(a) {
+  var b = [];
+  var g = 0;
+  for (var i = 0; i < a.length; i++) {
+    g = 0;
+    for (var j = 0; j < answer1.length; j++) {
+      if (a[i] == answer1[j]) {
+        b.push(answer2[j]);
+        g = 1;
+        break;
+      }
+    }
+    if (g == 0) b.push(a[i]);
+  }
+  return b;
+}
+function findRoot(word) {
+  stemmer.setCurrent(word);
+  stemmer.stem();
+  var w = stemmer.getCurrent();
+  return w;
+}
+
+function newTypes() {
+  for (var i = 0; i < 3; i++) {
+    var sen = types[i];
+    var sentence = [];
+    for (var j = 0; j < sen.length; j++) {
+      sentence.push(findRoot(sen[j]));
+    }
+    sentence = replaceWord(sentence);
+    var set = new Set(sentence);
+    set = Array.from(set);
+    newTypesAns.push(set.length);
   }
 }
 
 function selectCorp() {
   calWords();
+  newTypes();
+
+  // console.log(tokenAns, typesAns, newTypesAns);
   selectedCorp = document.getElementById("corp").value;
   document.getElementById("corpViewer").innerHTML =
     corpus[parseInt(selectedCorp)];
@@ -84,5 +166,13 @@ function submitValues() {
 function getNewTypes() {
   document.getElementById("submitbtn").style.display = "none";
   document.getElementById("outputAns").innerHTML =
-    "<p>Now, consider all the tokens with the same 'root' word to be of the same type. Recalculate the number of types.</p><label>#new types:</label><br/><input type='text' name='newtype' id='newtype' /><br/><button id='finalsb'>Submit</button>";
+    "<p>Now, consider all the tokens with the same 'root' word to be of the same type. Recalculate the number of types.</p><label>#new types:</label><br/><input type='text' name='newtype' id='newtype' /><br/><button id='finalsb' onclick='checkNewType()'>Submit</button>";
+}
+function checkNewType() {
+  var ans = document.getElementById("newtype").value;
+  if (parseInt(ans) == newTypesAns[selectedCorp]) {
+    console.log(true);
+  } else {
+    console.log(false);
+  }
 }
