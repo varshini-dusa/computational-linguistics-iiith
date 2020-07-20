@@ -47,6 +47,7 @@ function calWords() {
 }
 
 function selectCorp() {
+  calWords();
   selectedCorp = document.getElementById("corp").value;
   document.getElementById("corpViewer").innerHTML =
     corpus[parseInt(selectedCorp)];
