@@ -1,7 +1,19 @@
 .content {
-  margin: 5rem;
+  margin: 3rem;
 }
 #CorpSelector {
-  margin-top: 5rem;
-  margin-bottom: 5rem;
+  margin-top: 3rem;
+}
+#tablediv {
+  display: none;
+  padding-left: 20rem;
+}
+#submitbtn {
+  margin-top: 3rem;
+}
+#tablediv table,
+tr,
+td {
+  border-collapse: collapse;
+  border: solid black 1px;
 }
