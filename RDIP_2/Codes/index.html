@@ -13,5 +13,27 @@
     <script src="../Libraries/require.js"></script>
     <script src="./main.js" type="text/javascript"></script>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8 content">
+          <div id="lanSelector">
+            <select
+              name="lan"
+              id="lan"
+              class="form-control align-self-center mx-auto"
+              onchange="lanSelect()"
+            >
+              <option selected>---Select Language---</option>
+              <option value="English">English</option>
+              <option value="Hindi">Hindi</option>
+            </select>
+          </div>
+          <div id="CorpSelector"></div>
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+    </div>
+  </body>
 </html>
