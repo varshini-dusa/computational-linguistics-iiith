@@ -6,14 +6,16 @@
 }
 #tablediv {
   display: none;
-  padding-left: 20rem;
+  padding-left: 18rem;
 }
 #submitbtn {
   margin-top: 3rem;
+  margin-left: 8rem;
 }
 #tablediv table,
 tr,
 td {
   border-collapse: collapse;
   border: solid black 1px;
+  padding: 1rem;
 }

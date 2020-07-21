@@ -44,15 +44,23 @@ function lanSelect() {
 
 function corpSelect() {
   var k = document.getElementById("corp").value;
+  var esel =
+    "<select><option selected>Noun</option><option>Pronoun</option><option>Conjunction</option><option>Interjection</option><option>Verb</option><option>Determiner</option><option>Adjective</option><option>Adverb</option><option>Preposition</option></select>";
+  var hsel =
+    "<select><option selected>Noun</option><option>Pronoun</option><option>Conjunction</option><option>Interjection</option><option>Verb</option><option>Determiner</option><option>Adjective</option><option>Adverb</option><option>Postposition</option></select>";
+  var sel;
   if (selectedLanguage == "English") {
     selectedCorpus = engCorpus[k];
+    sel = esel;
   } else {
     selectedCorpus = hindiCorpus[k];
+    sel = hsel;
   }
   var arr = selectedCorpus.split(" ");
   var opt = "<table><tr><td>LEXICON</td><td>POS</td><td></td><td></td>";
   for (var i = 0; i < arr.length; i++) {
-    opt += "<tr><td>" + arr[i] + "</td><td></td><td></td><td></td></tr>";
+    opt +=
+      "<tr><td>" + arr[i] + "</td><td>" + sel + "</td><td></td><td></td></tr>";
   }
   document.getElementById("postable").innerHTML = opt + "</table>";
   document.getElementById("tablediv").style.display = "block";
